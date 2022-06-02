@@ -14,34 +14,11 @@ const Footer = () => {
 		if (wordSave.length > 0) {
 			const vocales_cambiar = ['e', 'i', 'a', 'o', 'u'];
 			const cambio = ['enter', 'imes', 'ai', 'ober', 'ufat'];
-			let accents = ['é', 'í', 'á', 'ó', 'ú'];
+
 			let encrypted = Array.from(item);
+			let validated = /^[a-z\s]+$/u;
 
-			let uppercase = encrypted.some((element) => {
-				if (
-					element === element.toUpperCase() &&
-					element !== ' ' &&
-					element !== '\n'
-				) {
-					console.log(element === element.toUpperCase());
-					return true;
-				}
-			});
-			let number = encrypted.some((element) => {
-				isNaN(element);
-			});
-
-			let accent = encrypted.some((element) => {
-				for (let index = 0; index < accents.length; index++) {
-					if (element.toLowerCase() === accents[index]) {
-						console.log(element);
-
-						return true;
-					}
-				}
-			});
-
-			if (uppercase === false && number === false && accent === false) {
+			if (validated.test(item)) {
 				encrypted = Array.from(item);
 				for (let i = 0; i < encrypted.length; i++) {
 					for (let j = 0; j < vocales_cambiar.length; j++) {
@@ -59,40 +36,11 @@ const Footer = () => {
 
 	const handleClickDescription = (item) => {
 		let encrypted = Array.from(item);
-		let accents = ['é', 'í', 'á', 'ó', 'ú'];
 		let newStr = '';
 
-		let uppercase = encrypted.some((element) => {
-			if (
-				element === element.toUpperCase() &&
-				element !== ' ' &&
-				element !== '\n'
-			) {
-				console.log(element === element.toUpperCase());
-				return true;
-			}
-		});
+		let validated = /^[a-z\s]+$/u;
 
-		let number = encrypted.some((element) => {
-			isNaN(element);
-		});
-
-		let accent = encrypted.some((element) => {
-			for (let index = 0; index < accents.length; index++) {
-				if (element.toLowerCase() == accents[index]) {
-					console.log(element);
-
-					return true;
-				}
-			}
-		});
-
-		if (
-			item !== '' &&
-			uppercase === false &&
-			number === false &&
-			accent === false
-		) {
+		if (validated.test(item)) {
 			encrypted = item;
 
 			for (let i = 0; i < encrypted.length; i++) {
