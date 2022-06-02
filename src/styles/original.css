@@ -65,6 +65,24 @@ body {
 	-o-border-radius: 32px;
 }
 
+.container_result1 {
+	overflow-y: auto;
+	width: 100%;
+
+	/* padding-top: 60%; */
+
+	grid-area: message;
+	text-align: center;
+	background-color: white;
+
+	box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+	border-radius: 32px;
+	-webkit-border-radius: 32px;
+	-moz-border-radius: 32px;
+	-ms-border-radius: 32px;
+	-o-border-radius: 32px;
+}
+
 #search {
 	width: 55%;
 	height: 85%;
