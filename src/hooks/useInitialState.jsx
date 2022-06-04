@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 const initialState = {
+	words: [],
 	wordSave: '',
-	word: [],
 };
 
 function useInitialState() {
@@ -11,7 +11,7 @@ function useInitialState() {
 	const addToWord = (payload) => {
 		setState({
 			...state,
-			word: [...state.word, payload],
+			words: [...state.words, payload],
 			wordSave: '',
 		});
 	};
@@ -23,16 +23,12 @@ function useInitialState() {
 		});
 	};
 
-	const removeFromWord = (id, e) => {
-		console.log(state.word);
-		const toRemove = state.word.filter((item) => item.id !== id);
-		console.log({ toRemove });
-
-		/* setState({
+	const removeFromWord = (id) => {
+		setState({
 			...state,
-			word: state.word.filter((item) => item.id !== id),
+			words: state.words.filter((item) => item.id !== id),
 			wordSave: '',
-		}); */
+		});
 	};
 
 	return {
@@ -40,7 +36,6 @@ function useInitialState() {
 		addToWord,
 		saveWord,
 		removeFromWord,
-		setState,
 	};
 }
 

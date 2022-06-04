@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext.jsx';
+import Item from '../item/Item.jsx';
 
 import muneco from '../../assets/Muñeco.svg';
 import '../../styles/original.css';
 
 const Result = () => {
 	const {
-		state: { word },
+		state: { words },
 	} = useContext(AppContext);
 	return (
 		<>
-			{word.length <= 0 ? (
+			{words.length <= 0 ? (
 				<section className="container_result" id="container_result2">
 					<img className="muñeco" id="muñeco2" src={muneco} alt="muñeco" />
 					<h1 className="mensaje_vacio" id="mensaje_vacio2">
@@ -22,8 +23,8 @@ const Result = () => {
 				</section>
 			) : (
 				<section className="container_result1" id="container_result2">
-					{word.map((words) => (
-						<>{words}</>
+					{words.map((item) => (
+						<Item key={item.id} {...item} />
 					))}
 				</section>
 			)}
