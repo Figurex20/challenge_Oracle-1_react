@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const initialState = {
 	wordSave: '',
 	word: [],
-	wordEncrypted: '',
-	validation: false,
 };
 
 function useInitialState() {
@@ -14,7 +12,6 @@ function useInitialState() {
 		setState({
 			...state,
 			word: [...state.word, payload],
-			validation: true,
 			wordSave: '',
 		});
 	};
@@ -23,21 +20,19 @@ function useInitialState() {
 		setState({
 			...state,
 			wordSave: payload,
-			validation: false,
-		});
-	};
-	const encryptedWord = (payload) => {
-		setState({
-			...state,
-			wordEncrypted: payload,
 		});
 	};
 
-	const removeFromWord = (indexValue) => {
-		setState({
+	const removeFromWord = (id, e) => {
+		console.log(state.word);
+		const toRemove = state.word.filter((item) => item.id !== id);
+		console.log({ toRemove });
+
+		/* setState({
 			...state,
-			word: state.word.filter((_, index) => index !== indexValue),
-		});
+			word: state.word.filter((item) => item.id !== id),
+			wordSave: '',
+		}); */
 	};
 
 	return {
@@ -45,7 +40,7 @@ function useInitialState() {
 		addToWord,
 		saveWord,
 		removeFromWord,
-		encryptedWord,
+		setState,
 	};
 }
 

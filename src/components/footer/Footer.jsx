@@ -1,14 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import information from '../../assets/informacion.svg';
 import { AppContext } from '../../context/AppContext.jsx';
+import { v4 as uuidv4 } from 'uuid';
 
 import '../../styles/original.css';
 
 const Footer = () => {
 	const {
-		state: { wordSave },
+		state: { wordSave, word },
 		addToWord,
+		removeFromWord,
 	} = useContext(AppContext);
+
+	useEffect(() => {
+		// console.log(word);
+	}, [word]);
+
+	const copyDiv = (e) => {
+		let id = e.target.parentNode.id;
+		let div = document.getElementById(id);
+		let text = div.querySelector('.div_p');
+		let result = text.textContent;
+		// copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+		navigator.clipboard.writeText(result);
+	};
+
+	const deleteDiv = (e) => {
+		let id = e.target.parentNode.id;
+		removeFromWord(id, e);
+	};
+
+	const div = (wordSave) => {
+		let id = uuidv4();
+		return (
+			<div id={id}>
+				<p className="div_p">{wordSave}</p>
+				<button className="div-button_delete" onClick={(e) => deleteDiv(e)}>
+					X
+				</button>
+				<button className="div-button_copy" onClick={(e) => copyDiv(e)}>
+					copy
+				</button>
+				<p />
+			</div>
+		);
+	};
 
 	const handleClickEncrition = (item) => {
 		if (wordSave.length > 0) {
@@ -28,10 +64,13 @@ const Footer = () => {
 					}
 
 					let result = encrypted.join('');
-					addToWord(result);
+					let containerDiv = div(result);
+
+					addToWord(containerDiv);
 				}
 			}
 		}
+		console.log(word);
 	};
 
 	const handleClickDescription = (item) => {
@@ -66,7 +105,8 @@ const Footer = () => {
 					newStr += encrypted[i]; // volvemos a agregar el caracter a newStr
 				}
 			}
-			addToWord(newStr);
+			let containerDiv = div(newStr);
+			addToWord(containerDiv);
 		}
 	};
 

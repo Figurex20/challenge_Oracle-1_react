@@ -1,28 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext.jsx';
-import { v4 as uuidv4 } from 'uuid';
+
 import muneco from '../../assets/Muñeco.svg';
 import '../../styles/original.css';
 
 const Result = () => {
 	const {
 		state: { word },
-		removeFromWord,
 	} = useContext(AppContext);
-	// const { v4: uuidv4 } = require('uuid');
-	let id = uuidv4();
-
-	const deleteDiv = (e) => {
-		let id = e.target.parentNode.id;
-		let div = document.getElementById(id);
-		div.remove();
-		removeFromWord(id);
-		console.log(word);
-	};
-
 	return (
 		<>
-			{word <= 0 ? (
+			{word.length <= 0 ? (
 				<section className="container_result" id="container_result2">
 					<img className="muñeco" id="muñeco2" src={muneco} alt="muñeco" />
 					<h1 className="mensaje_vacio" id="mensaje_vacio2">
@@ -34,18 +22,8 @@ const Result = () => {
 				</section>
 			) : (
 				<section className="container_result1" id="container_result2">
-					{word.map((words, index) => (
-						<div id={index}>
-							<p className="div_p">{words}</p>
-							<button
-								className="div-button_delete"
-								onClick={(e) => deleteDiv(e)}
-							>
-								X
-							</button>
-							<button className="div-button_copy">copy</button>
-							<p />
-						</div>
+					{word.map((words) => (
+						<>{words}</>
 					))}
 				</section>
 			)}
