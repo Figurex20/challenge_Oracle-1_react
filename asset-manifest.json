@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/challenge_Oracle-1_react/static/css/main.ad963529.css",
+    "main.js": "/challenge_Oracle-1_react/static/js/main.e035579c.js",
+    "static/media/Muñeco.svg": "/challenge_Oracle-1_react/static/media/Muñeco.cd57497a937c57681e0c30c45b9d3db9.svg",
+    "static/media/Vector.svg": "/challenge_Oracle-1_react/static/media/Vector.485da93e8dd21ce3fedf11ff3cb62b57.svg",
+    "static/media/informacion.svg": "/challenge_Oracle-1_react/static/media/informacion.59a7e2024b6e5887f17afb221aa4d077.svg",
+    "index.html": "/challenge_Oracle-1_react/index.html",
+    "main.ad963529.css.map": "/challenge_Oracle-1_react/static/css/main.ad963529.css.map",
+    "main.e035579c.js.map": "/challenge_Oracle-1_react/static/js/main.e035579c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad963529.css",
+    "static/js/main.e035579c.js"
+  ]
+}
